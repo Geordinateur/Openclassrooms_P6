@@ -48,3 +48,36 @@ exports.getAllSauce = (req, res, next) => {
 		.then(sauces => res.status(200).json(sauces))
 		.catch(error => res.status(400).json({ error }));
 };
+
+exports.likeSauce = (req, res, next) => {
+	Sauce.findOne({_id: req.params.id })
+		.then(sauce => {
+			switch (req.body.like) {
+				case 1:
+					sauce.likes++;
+					sauce.usersLiked.push(req.body.userId);
+					break;
+				case -1:
+					sauce.dislikes++
+					sauce.usersDisliked.push(req.body.userId);
+					break;
+				default: 
+					if(sauce.usersLiked.includes(req.body.userId)){
+						sauce.usersLiked.splice(sauce.usersLiked.indexOf(req.body.userId), 1);
+						sauce.likes--;
+					}
+					if(sauce.usersDisliked.includes(req.body.userId)) {
+						sauce.usersDisliked.splice(sauce.usersLiked.indexOf(req.body.userId), 1);
+						sauce.dislikes--;
+					}
+			}
+			Sauce.updateOne({ _id: req.params.id }, { usersLiked: sauce.usersLiked, usersDisliked: sauce.usersDisliked, likes: sauce.likes, dislikes: sauce.dislikes})
+					.then(() => res.status(200).json({ message: 'Vote ajouté' }))
+					.catch(error => res.status(400).json({ error }));
+		})
+	/*	Sauce.updateOne({ _id: req.params.id }, req.body.like > 0 ? { usersLiked: req.body.userId, likes: req.body.like} : {usersDisLiked: req.body.userId, disLikes: req.body.like})
+		.then(sauce => res.status(200).json({ message: 'Merci pour ton vote!' }))
+		.catch(error => res.status(500).json({ error }));
+		*/
+		.catch(error => res.status(500).json({ error }));
+};
