@@ -75,9 +75,5 @@ exports.likeSauce = (req, res, next) => {
 					.then(() => res.status(200).json({ message: 'Vote ajouté' }))
 					.catch(error => res.status(400).json({ error }));
 		})
-	/*	Sauce.updateOne({ _id: req.params.id }, req.body.like > 0 ? { usersLiked: req.body.userId, likes: req.body.like} : {usersDisLiked: req.body.userId, disLikes: req.body.like})
-		.then(sauce => res.status(200).json({ message: 'Merci pour ton vote!' }))
-		.catch(error => res.status(500).json({ error }));
-		*/
 		.catch(error => res.status(500).json({ error }));
 };
