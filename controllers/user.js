@@ -1,7 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const CryptoJS = require("crypto-js");
-console.log('mon email: ' + CryptoJS.SHA256("emuricardo@free.fr").toString());
 
 const User = require('../models/User');
 
@@ -20,9 +19,7 @@ exports.signup = (req, res, next) => {
 };
 
 exports.login = (req, res, next) => {
-	console.log('baaaa');
 	User.findOne({ email: req.body.email })
-	//User.findOne({ email: req.body.email })
 		.then(user => {
 	console.log(CryptoJS.AES.encrypt(req.body.email, '123').toString())
 			console.log(user)
