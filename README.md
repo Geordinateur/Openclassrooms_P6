@@ -8,7 +8,13 @@ DB_USER=
 DB_PASS=
 ```
 
-## Contraintes - Règles :
+## Contraintes
 - Implémenter un modèle logique de données conformément à la réglementation
 - Stocker des données de manière sécurisée
 - Mettre en œuvre des opérations CRUD de manière sécurisée
+
+## Technologies utilisées
+
+- Framework : Express
+- Serveur : NodeJS
+- Base de données : MongoDB
