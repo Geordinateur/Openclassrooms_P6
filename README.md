@@ -14,7 +14,6 @@ DB_PASS=
 - Mettre en œuvre des opérations CRUD de manière sécurisée
 
 ## Technologies utilisées
-
 - Framework : Express
 - Serveur : NodeJS
 - Base de données : MongoDB
