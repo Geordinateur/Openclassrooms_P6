@@ -10,10 +10,10 @@ DB_PASS=
 
 ## Contraintes - Règles :
 
-Utiliser des pratiques de codes écurisées :
+- Utiliser des pratiques de codes écurisées :
 
-l'API doit respecter le RGPD et les standards OWASP
-Les données sensibles doivent impérativement protégées (même l'adresse e-mail ?)
+    - l'API doit respecter le RGPD et les standards OWASP
+    - Les données sensibles doivent impérativement protégées (même l'adresse e-mail ?)
 
 les mots de passe sont stockés de manière sécurisée (hash avec bcrypt)
 l'authentification est renforcée sur les routes requises
